@@ -1,6 +1,6 @@
 import java.io.*;
 import java.net.*;
-import java.util.*;
+import java.util.concurrent.*;
 
 public class FriendDatabaseServer {
     private static final int PORT = 8080;
@@ -10,10 +10,13 @@ public class FriendDatabaseServer {
     private static final String RED = "\033[31m";
     private static final String RESET = "\033[0m";
 
-    private static final Map<String, String> friends = new HashMap<>();
+    private static final ConcurrentHashMap<String, String> friends = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
         loadDatabase();
+        
+        Runtime.getRuntime().addShutdownHook(new Thread(FriendDatabaseServer::saveDatabase));
+
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             System.out.println("Server started on port " + PORT);
             while (true) {
@@ -31,7 +34,7 @@ public class FriendDatabaseServer {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 2) {
-                    friends.put(parts[0], parts[1]);
+                    friends.put(parts[0].trim(), parts[1].trim());
                 }
             }
         } catch (IOException e) {
@@ -41,7 +44,7 @@ public class FriendDatabaseServer {
 
     private static synchronized void saveDatabase() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME))) {
-            for (Map.Entry<String, String> entry : friends.entrySet()) {
+            for (var entry : friends.entrySet()) {
                 writer.println(entry.getKey() + "," + entry.getValue());
             }
         } catch (IOException e) {
@@ -63,14 +66,14 @@ public class FriendDatabaseServer {
 
                 out.print(CLEAR_SCREEN);
                 out.println(GREEN + "Welcome to the Friend Database Server!" + RESET);
-                out.println("Commands: add [name] [number], search [name], delete [name], list, exit");
+                out.println("Commands: add [name] [number], search [name], edit [name], delete [name], list, exit");
 
                 String input;
                 while ((input = in.readLine()) != null) {
-                    String[] parts = input.split(" ", 3);
+                    String[] parts = input.trim().split(" ", 3);
                     if (parts.length == 0) continue;
-                    String command = parts[0].toLowerCase();
                     
+                    String command = parts[0].toLowerCase();
                     switch (command) {
                         case "add":
                             if (parts.length == 3) {
@@ -81,7 +84,7 @@ public class FriendDatabaseServer {
                                 out.println(RED + "Usage: add [name] [number]" + RESET);
                             }
                             break;
-                        
+
                         case "search":
                             if (parts.length == 2) {
                                 String number = friends.get(parts[1]);
@@ -94,7 +97,7 @@ public class FriendDatabaseServer {
                                 out.println(RED + "Usage: search [name]" + RESET);
                             }
                             break;
-                        
+
                         case "delete":
                             if (parts.length == 2) {
                                 if (friends.remove(parts[1]) != null) {
@@ -107,15 +110,51 @@ public class FriendDatabaseServer {
                                 out.println(RED + "Usage: delete [name]" + RESET);
                             }
                             break;
-                        
+
                         case "list":
                             if (friends.isEmpty()) {
                                 out.println(RED + "No friends in the database." + RESET);
                             } else {
-                                out.println(GREEN + "Friend List:" + RESET);
-                                for (Map.Entry<String, String> entry : friends.entrySet()) {
-                                    out.println(entry.getKey() + " - " + entry.getValue());
+                                out.println(GREEN + "\nFriend List:\n" + RESET);
+                                out.println(String.format("%-20s %s", "Name", "Phone Number"));
+                                out.println("--------------------------------");
+                                for (var entry : friends.entrySet()) {
+                                    out.println(String.format("%-20s %s", entry.getKey(), entry.getValue()));
                                 }
+                            }
+                            break;
+                        
+                            case "edit":
+                            if (parts.length == 2) {
+                                String name = parts[1];
+                                if (friends.containsKey(name)) {
+                                    String currentNumber = friends.get(name);
+                                    out.println(GREEN + name + " found" + RESET);
+                                    out.println("Please select: update name, update phone number, or both");
+                                    String option = in.readLine().trim().toLowerCase();
+                                    
+                                    String newName = name;
+                                    String newNumber = currentNumber;
+                                    
+                                    if (option.equals("update name") || option.equals("both")) {
+                                        out.println("Enter new name:");
+                                        newName = in.readLine().trim();
+                                        friends.remove(name);  // Remove old name
+                                    }
+                                    
+                                    if (option.equals("update phone number") || option.equals("both")) {
+                                        out.println("Enter new phone number:");
+                                        newNumber = in.readLine().trim();
+                                    }
+                                    
+                                    friends.put(newName, newNumber);  // Add updated entry
+                                    saveDatabase();
+                                    out.println(GREEN + "Friend updated successfully." + RESET);
+                                } else {
+                                    out.println(RED + "Friend not found." + RESET);
+                                }
+                            } else {
+                                out.println(RED + "Usage: edit [name]" + RESET);
                             }
                             break;
 
@@ -130,7 +169,7 @@ public class FriendDatabaseServer {
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Client disconnected.");
             }
         }
     }
