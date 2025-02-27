@@ -1,0 +1,24 @@
+Feb 27, 2025 11:19:11 AM FriendDatabaseServer loadDatabase
+INFO: Database loaded successfully.
+Feb 27, 2025 11:19:11 AM FriendDatabaseServer main
+INFO: Server started on port 8080
+Feb 27, 2025 11:20:54 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Feb 27, 2025 11:21:00 AM FriendDatabaseServer$ClientHandler run
+INFO: Client authenticated: /0:0:0:0:0:0:0:1
+Feb 27, 2025 11:21:00 AM FriendDatabaseServer$ClientHandler run
+INFO: Active users: 1
+Feb 27, 2025 11:21:12 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: usercount
+Feb 27, 2025 11:21:12 AM FriendDatabaseServer$ClientHandler run
+INFO: Active users query from: /0:0:0:0:0:0:0:1
+Feb 27, 2025 11:21:30 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Feb 27, 2025 11:21:34 AM FriendDatabaseServer$ClientHandler run
+INFO: Client authenticated: /0:0:0:0:0:0:0:1
+Feb 27, 2025 11:21:34 AM FriendDatabaseServer$ClientHandler run
+INFO: Active users: 1
+Feb 27, 2025 11:21:40 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: usercount
+Feb 27, 2025 11:21:40 AM FriendDatabaseServer$ClientHandler run
+INFO: Active users query from: /0:0:0:0:0:0:0:1

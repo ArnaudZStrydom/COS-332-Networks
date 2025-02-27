@@ -10,12 +10,13 @@ public class FriendDatabaseServer {
     private static final String FILE_NAME = "friends.txt";
     private static final String ADMIN_PASSWORD = "admin123"; // Change this in production
     private static final Map<String, String> friends = new HashMap<>();
-    private static final Set<String> activeUsers = ConcurrentHashMap.newKeySet(); // Active users set
+
     private static final ExecutorService threadPool = Executors.newFixedThreadPool(10);
     private static final Pattern PHONE_PATTERN = Pattern.compile("\\d{7,15}");
     private static final Pattern NAME_PATTERN = Pattern.compile("^[A-Za-z ]{1,30}$");
 
     private static final Logger logger = Logger.getLogger(FriendDatabaseServer.class.getName());
+    private static final AtomicInteger activeUsers = new AtomicInteger(0);  // Counter for active users
 
     public static void main(String[] args) {
         setupLogger();
@@ -27,6 +28,7 @@ public class FriendDatabaseServer {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 logger.info("New client connected: " + clientSocket.getInetAddress());
+                activeUsers.incrementAndGet();  // Increment active users count
                 threadPool.execute(new ClientHandler(clientSocket));
             }
         } catch (IOException e) {
@@ -97,10 +99,6 @@ public class FriendDatabaseServer {
                 logger.info("Client authenticated: " + socket.getInetAddress());
                 out.println("Access Granted. Welcome!");
                 out.println("Commands: add [name] [number], search [name], delete [name], list, usercount, exit");
-
-                // Track active user
-                activeUsers.add(socket.getInetAddress().toString());
-                logger.info("Active users: " + activeUsers.size());
 
                 String input;
                 while ((input = in.readLine()) != null) {
@@ -191,15 +189,14 @@ public class FriendDatabaseServer {
                             break;
 
                         case "usercount":
-                            out.println("Active users: " + activeUsers.size());
-                            logger.info("Active users query from: " + socket.getInetAddress());
+                            out.println("Active users: " + activeUsers.get());
                             break;
 
                         case "exit":
                             out.println("Goodbye!");
-                            activeUsers.remove(socket.getInetAddress().toString());
                             logger.info("Client disconnected: " + socket.getInetAddress());
                             socket.close();
+                            activeUsers.decrementAndGet();  // Decrement active users count
                             return;
 
                         default:
