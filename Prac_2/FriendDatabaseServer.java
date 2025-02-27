@@ -1,30 +1,49 @@
 import java.io.*;
 import java.net.*;
+import java.util.*;
 import java.util.concurrent.*;
+import java.util.regex.*;
+import java.util.logging.*;
 
 public class FriendDatabaseServer {
     private static final int PORT = 8080;
     private static final String FILE_NAME = "friends.txt";
-    private static final String CLEAR_SCREEN = "\033[2J\033[H";
-    private static final String GREEN = "\033[32m";
-    private static final String RED = "\033[31m";
-    private static final String RESET = "\033[0m";
+    private static final String ADMIN_PASSWORD = "admin123"; // Change this in production
+    private static final Map<String, String> friends = new HashMap<>();
+    private static final Set<String> activeUsers = ConcurrentHashMap.newKeySet(); // Active users set
+    private static final ExecutorService threadPool = Executors.newFixedThreadPool(10);
+    private static final Pattern PHONE_PATTERN = Pattern.compile("\\d{7,15}");
+    private static final Pattern NAME_PATTERN = Pattern.compile("^[A-Za-z ]{1,30}$");
 
-    private static final ConcurrentHashMap<String, String> friends = new ConcurrentHashMap<>();
+    private static final Logger logger = Logger.getLogger(FriendDatabaseServer.class.getName());
 
     public static void main(String[] args) {
+        setupLogger();
         loadDatabase();
-        
-        Runtime.getRuntime().addShutdownHook(new Thread(FriendDatabaseServer::saveDatabase));
 
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            System.out.println("Server started on port " + PORT);
+            logger.info("Server started on port " + PORT);
+
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                new ClientHandler(clientSocket).start();
+                logger.info("New client connected: " + clientSocket.getInetAddress());
+                threadPool.execute(new ClientHandler(clientSocket));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.severe("Server error: " + e.getMessage());
+        } finally {
+            threadPool.shutdown();
+        }
+    }
+
+    private static void setupLogger() {
+        try {
+            FileHandler fileHandler = new FileHandler("server.log", true);
+            fileHandler.setFormatter(new SimpleFormatter());
+            logger.addHandler(fileHandler);
+            logger.setUseParentHandlers(false);
+        } catch (IOException e) {
+            System.err.println("Failed to initialize logger: " + e.getMessage());
         }
     }
 
@@ -37,22 +56,24 @@ public class FriendDatabaseServer {
                     friends.put(parts[0].trim(), parts[1].trim());
                 }
             }
+            logger.info("Database loaded successfully.");
         } catch (IOException e) {
-            System.out.println("No existing database found. Starting fresh.");
+            logger.warning("No existing database found. Starting fresh.");
         }
     }
 
     private static synchronized void saveDatabase() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME))) {
-            for (var entry : friends.entrySet()) {
+            for (Map.Entry<String, String> entry : friends.entrySet()) {
                 writer.println(entry.getKey() + "," + entry.getValue());
             }
+            logger.info("Database saved successfully.");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.severe("Error saving database: " + e.getMessage());
         }
     }
 
-    private static class ClientHandler extends Thread {
+    private static class ClientHandler implements Runnable {
         private final Socket socket;
 
         public ClientHandler(Socket socket) {
@@ -64,112 +85,130 @@ public class FriendDatabaseServer {
             try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 
-                out.print(CLEAR_SCREEN);
-                out.println(GREEN + "Welcome to the Friend Database Server!" + RESET);
-                out.println("Commands: add [name] [number], search [name], edit [name], delete [name], list, exit");
+                out.println("Enter Admin Password:");
+                String password = in.readLine();
+                
+                if (!ADMIN_PASSWORD.equals(password)) {
+                    logger.warning("Unauthorized access attempt from " + socket.getInetAddress());
+                    out.println("Access Denied. Disconnecting.");
+                    socket.close();
+                    return;
+                }
+                logger.info("Client authenticated: " + socket.getInetAddress());
+                out.println("Access Granted. Welcome!");
+                out.println("Commands: add [name] [number], search [name], delete [name], list, usercount, exit");
+
+                // Track active user
+                activeUsers.add(socket.getInetAddress().toString());
+                logger.info("Active users: " + activeUsers.size());
 
                 String input;
                 while ((input = in.readLine()) != null) {
-                    String[] parts = input.trim().split(" ", 3);
+                    input = input.trim();
+                    if (input.isEmpty()) continue;
+
+                    String[] parts = input.split("\\s+", 3);
                     if (parts.length == 0) continue;
-                    
+
                     String command = parts[0].toLowerCase();
+                    logger.info("Command received from " + socket.getInetAddress() + ": " + input);
+
                     switch (command) {
                         case "add":
                             if (parts.length == 3) {
-                                friends.put(parts[1], parts[2]);
-                                saveDatabase();
-                                out.println(GREEN + "Friend added successfully." + RESET);
+                                String name = parts[1].trim();
+                                String number = parts[2].trim();
+
+                                if (!NAME_PATTERN.matcher(name).matches()) {
+                                    out.println("Invalid name. Use only letters and spaces (1-30 characters).");
+                                    break;
+                                }
+                                if (!PHONE_PATTERN.matcher(number).matches()) {
+                                    out.println("Invalid phone number. Use 7-15 digits only.");
+                                    break;
+                                }
+
+                                synchronized (friends) {
+                                    if (friends.containsKey(name)) {
+                                        out.println("This name already exists. Overwrite? (yes/no)");
+                                        String response = in.readLine().trim().toLowerCase();
+                                        if (!response.equals("yes")) {
+                                            out.println("Addition cancelled.");
+                                            break;
+                                        }
+                                    }
+                                    friends.put(name, number);
+                                    saveDatabase();
+                                    out.println("Friend added successfully.");
+                                    logger.info("Friend added: " + name);
+                                }
                             } else {
-                                out.println(RED + "Usage: add [name] [number]" + RESET);
+                                out.println("Usage: add [name] [number]");
                             }
                             break;
 
                         case "search":
                             if (parts.length == 2) {
-                                String number = friends.get(parts[1]);
-                                if (number != null) {
-                                    out.println(GREEN + "Found: " + parts[1] + " - " + number + RESET);
-                                } else {
-                                    out.println(RED + "Friend not found." + RESET);
+                                String name = parts[1].trim();
+                                synchronized (friends) {
+                                    String number = friends.get(name);
+                                    out.println(number != null ? "Found: " + name + " - " + number : "Friend not found.");
+                                    logger.info("Search query for: " + name);
                                 }
                             } else {
-                                out.println(RED + "Usage: search [name]" + RESET);
+                                out.println("Usage: search [name]");
                             }
                             break;
 
                         case "delete":
                             if (parts.length == 2) {
-                                if (friends.remove(parts[1]) != null) {
-                                    saveDatabase();
-                                    out.println(GREEN + "Friend deleted." + RESET);
-                                } else {
-                                    out.println(RED + "Friend not found." + RESET);
+                                String name = parts[1].trim();
+                                synchronized (friends) {
+                                    if (friends.remove(name) != null) {
+                                        saveDatabase();
+                                        out.println("Friend deleted.");
+                                        logger.info("Friend deleted: " + name);
+                                    } else {
+                                        out.println("Friend not found.");
+                                    }
                                 }
                             } else {
-                                out.println(RED + "Usage: delete [name]" + RESET);
+                                out.println("Usage: delete [name]");
                             }
                             break;
 
                         case "list":
-                            if (friends.isEmpty()) {
-                                out.println(RED + "No friends in the database." + RESET);
-                            } else {
-                                out.println(GREEN + "\nFriend List:\n" + RESET);
-                                out.println(String.format("%-20s %s", "Name", "Phone Number"));
-                                out.println("--------------------------------");
-                                for (var entry : friends.entrySet()) {
-                                    out.println(String.format("%-20s %s", entry.getKey(), entry.getValue()));
-                                }
-                            }
-                            break;
-                        
-                            case "edit":
-                            if (parts.length == 2) {
-                                String name = parts[1];
-                                if (friends.containsKey(name)) {
-                                    String currentNumber = friends.get(name);
-                                    out.println(GREEN + name + " found" + RESET);
-                                    out.println("Please select: update name, update phone number, or both");
-                                    String option = in.readLine().trim().toLowerCase();
-                                    
-                                    String newName = name;
-                                    String newNumber = currentNumber;
-                                    
-                                    if (option.equals("update name") || option.equals("both")) {
-                                        out.println("Enter new name:");
-                                        newName = in.readLine().trim();
-                                        friends.remove(name);  // Remove old name
-                                    }
-                                    
-                                    if (option.equals("update phone number") || option.equals("both")) {
-                                        out.println("Enter new phone number:");
-                                        newNumber = in.readLine().trim();
-                                    }
-                                    
-                                    friends.put(newName, newNumber);  // Add updated entry
-                                    saveDatabase();
-                                    out.println(GREEN + "Friend updated successfully." + RESET);
+                            synchronized (friends) {
+                                if (friends.isEmpty()) {
+                                    out.println("No friends in the database.");
                                 } else {
-                                    out.println(RED + "Friend not found." + RESET);
+                                    out.println("Friend List:");
+                                    for (Map.Entry<String, String> entry : friends.entrySet()) {
+                                        out.println(entry.getKey() + " - " + entry.getValue());
+                                    }
                                 }
-                            } else {
-                                out.println(RED + "Usage: edit [name]" + RESET);
                             }
                             break;
 
+                        case "usercount":
+                            out.println("Active users: " + activeUsers.size());
+                            logger.info("Active users query from: " + socket.getInetAddress());
+                            break;
+
                         case "exit":
-                            out.println(GREEN + "Goodbye!" + RESET);
+                            out.println("Goodbye!");
+                            activeUsers.remove(socket.getInetAddress().toString());
+                            logger.info("Client disconnected: " + socket.getInetAddress());
                             socket.close();
                             return;
 
                         default:
-                            out.println(RED + "Unknown command." + RESET);
+                            out.println("Unknown command.");
                             break;
                     }
                 }
             } catch (IOException e) {
-                System.out.println("Client disconnected.");
+                logger.severe("Client error: " + e.getMessage());
             }
         }
     }
