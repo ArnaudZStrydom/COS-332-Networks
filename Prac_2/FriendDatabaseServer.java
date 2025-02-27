@@ -99,7 +99,7 @@ public class FriendDatabaseServer {
                 }
                 logger.info("Client authenticated: " + socket.getInetAddress());
                 out.println("Access Granted. Welcome!");
-                out.println("Commands: add [name] [number], search [name], delete [name], list, usercount, exit");
+                out.println("Commands: add [name] [number], search [name|number], delete [name], edit [name] [new_name|new_number], list, usercount, exit");
 
                 String input;
                 while ((input = in.readLine()) != null) {
@@ -148,14 +148,77 @@ public class FriendDatabaseServer {
 
                         case "search":
                             if (parts.length == 2) {
-                                String name = parts[1].trim();
+                                String query = parts[1].trim();
                                 synchronized (friends) {
-                                    String number = friends.get(name);
-                                    out.println(number != null ? "Found: " + name + " - " + number : "Friend not found.");
-                                    logger.info("Search query for: " + name);
+                                    if (NAME_PATTERN.matcher(query).matches()) {
+                                        // Search by name
+                                        String number = friends.get(query);
+                                        out.println(number != null ? "Found: " + query + " - " + number : "Friend not found.");
+                                        logger.info("Search query by name: " + query);
+                                    } else if (PHONE_PATTERN.matcher(query).matches()) {
+                                        // Search by phone number
+                                        String foundName = null;
+                                        for (Map.Entry<String, String> entry : friends.entrySet()) {
+                                            if (entry.getValue().equals(query)) {
+                                                foundName = entry.getKey();
+                                                break;
+                                            }
+                                        }
+                                        out.println(foundName != null ? "Found: " + foundName + " - " + query : "Friend not found.");
+                                        logger.info("Search query by number: " + query);
+                                    } else {
+                                        out.println("Invalid query. Use a valid name or phone number.");
+                                    }
                                 }
                             } else {
-                                out.println("Usage: search [name]");
+                                out.println("Usage: search [name|number]");
+                            }
+                            break;
+
+                        case "edit":
+                            if (parts.length == 3) {
+                                String name = parts[1].trim();
+                                String newValue = parts[2].trim();
+
+                                synchronized (friends) {
+                                    if (friends.containsKey(name)) {
+                                        out.println("Choose what to edit: [name|number|both]");
+                                        String choice = in.readLine().trim().toLowerCase();
+                                        if (choice.equals("name")) {
+                                            out.println("Enter new name:");
+                                            String newName = in.readLine().trim();
+                                            friends.put(newName, friends.remove(name));
+                                            saveDatabase();
+                                            out.println("Name updated successfully.");
+                                        } else if (choice.equals("number")) {
+                                            if (!PHONE_PATTERN.matcher(newValue).matches()) {
+                                                out.println("Invalid phone number format.");
+                                            } else {
+                                                friends.put(name, newValue);
+                                                saveDatabase();
+                                                out.println("Phone number updated successfully.");
+                                            }
+                                        } else if (choice.equals("both")) {
+                                            out.println("Enter new name:");
+                                            String newName = in.readLine().trim();
+                                            if (!PHONE_PATTERN.matcher(newValue).matches()) {
+                                                out.println("Invalid phone number format.");
+                                            } else {
+                                                friends.put(newName, newValue);
+                                                friends.remove(name);
+                                                saveDatabase();
+                                                out.println("Name and number updated successfully.");
+                                            }
+                                        } else {
+                                            out.println("Invalid choice. No changes made.");
+                                        }
+                                        logger.info("Friend updated: " + name);
+                                    } else {
+                                        out.println("Friend not found.");
+                                    }
+                                }
+                            } else {
+                                out.println("Usage: edit [name] [new_name|new_number]");
                             }
                             break;
 
@@ -211,3 +274,4 @@ public class FriendDatabaseServer {
         }
     }
 }
+
