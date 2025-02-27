@@ -42,3 +42,35 @@ Feb 27, 2025 11:40:05 AM FriendDatabaseServer$ClientHandler run
 INFO: Command received from /0:0:0:0:0:0:0:1: list
 Feb 27, 2025 11:40:10 AM FriendDatabaseServer$ClientHandler run
 INFO: Command received from /0:0:0:0:0:0:0:1: add
+Feb 27, 2025 11:45:54 AM FriendDatabaseServer loadDatabase
+INFO: Database loaded successfully.
+Feb 27, 2025 11:45:54 AM FriendDatabaseServer main
+INFO: Server started on port 8080
+Feb 27, 2025 11:46:09 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Feb 27, 2025 11:46:13 AM FriendDatabaseServer$ClientHandler run
+INFO: Client authenticated: /0:0:0:0:0:0:0:1
+Feb 27, 2025 11:46:38 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: add
+Feb 27, 2025 11:47:06 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: add Arnaud Strydom [C[C[C[C         0735736624
+Feb 27, 2025 11:47:22 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: add 1234567890
+Feb 27, 2025 11:47:31 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: add Arnaud 1234567890
+Feb 27, 2025 11:47:31 AM FriendDatabaseServer saveDatabase
+INFO: Database saved successfully.
+Feb 27, 2025 11:47:31 AM FriendDatabaseServer$ClientHandler run
+INFO: Friend added: Arnaud
+Feb 27, 2025 11:47:44 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: list
+Feb 27, 2025 11:47:56 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: search Arnaud
+Feb 27, 2025 11:47:56 AM FriendDatabaseServer$ClientHandler run
+INFO: Search query by name: Arnaud
+Feb 27, 2025 11:48:11 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: search 0846672431
+Feb 27, 2025 11:48:11 AM FriendDatabaseServer$ClientHandler run
+INFO: Search query by number: 0846672431
+Feb 27, 2025 11:48:24 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: edit Arnaud

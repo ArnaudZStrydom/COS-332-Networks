@@ -99,7 +99,7 @@ public class FriendDatabaseServer {
                 }
                 logger.info("Client authenticated: " + socket.getInetAddress());
                 out.println("Access Granted. Welcome!");
-                out.println("Commands: add [name] [number], search [name|number], delete [name], edit [name] [new_name|new_number], list, usercount, exit");
+                out.println("Commands: add [name] [number], search [name|number], delete [name], edit [name], list, usercount, exit");
 
                 String input;
                 while ((input = in.readLine()) != null) {
@@ -176,13 +176,13 @@ public class FriendDatabaseServer {
                             break;
 
                         case "edit":
-                            if (parts.length == 3) {
+                            if (parts.length == 2) {
                                 String name = parts[1].trim();
-                                String newValue = parts[2].trim();
 
                                 synchronized (friends) {
                                     if (friends.containsKey(name)) {
-                                        out.println("Choose what to edit: [name|number|both]");
+                                        out.println("Friend found: " + name + " - " + friends.get(name));
+                                        out.println("What would you like to edit? [name|number|both]");
                                         String choice = in.readLine().trim().toLowerCase();
                                         if (choice.equals("name")) {
                                             out.println("Enter new name:");
@@ -191,23 +191,27 @@ public class FriendDatabaseServer {
                                             saveDatabase();
                                             out.println("Name updated successfully.");
                                         } else if (choice.equals("number")) {
-                                            if (!PHONE_PATTERN.matcher(newValue).matches()) {
+                                            out.println("Enter new phone number:");
+                                            String newNumber = in.readLine().trim();
+                                            if (!PHONE_PATTERN.matcher(newNumber).matches()) {
                                                 out.println("Invalid phone number format.");
                                             } else {
-                                                friends.put(name, newValue);
+                                                friends.put(name, newNumber);
                                                 saveDatabase();
                                                 out.println("Phone number updated successfully.");
                                             }
                                         } else if (choice.equals("both")) {
                                             out.println("Enter new name:");
                                             String newName = in.readLine().trim();
-                                            if (!PHONE_PATTERN.matcher(newValue).matches()) {
+                                            out.println("Enter new phone number:");
+                                            String newNumber = in.readLine().trim();
+                                            if (!PHONE_PATTERN.matcher(newNumber).matches()) {
                                                 out.println("Invalid phone number format.");
                                             } else {
-                                                friends.put(newName, newValue);
+                                                friends.put(newName, newNumber);
                                                 friends.remove(name);
                                                 saveDatabase();
-                                                out.println("Name and number updated successfully.");
+                                                out.println("Name and phone number updated successfully.");
                                             }
                                         } else {
                                             out.println("Invalid choice. No changes made.");
@@ -218,7 +222,7 @@ public class FriendDatabaseServer {
                                     }
                                 }
                             } else {
-                                out.println("Usage: edit [name] [new_name|new_number]");
+                                out.println("Usage: edit [name]");
                             }
                             break;
 
@@ -274,4 +278,3 @@ public class FriendDatabaseServer {
         }
     }
 }
-
