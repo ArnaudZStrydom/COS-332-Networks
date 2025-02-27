@@ -74,3 +74,39 @@ Feb 27, 2025 11:48:11 AM FriendDatabaseServer$ClientHandler run
 INFO: Search query by number: 0846672431
 Feb 27, 2025 11:48:24 AM FriendDatabaseServer$ClientHandler run
 INFO: Command received from /0:0:0:0:0:0:0:1: edit Arnaud
+Feb 27, 2025 11:51:06 AM FriendDatabaseServer loadDatabase
+INFO: Database loaded successfully.
+Feb 27, 2025 11:51:07 AM FriendDatabaseServer main
+INFO: Server started on port 8080
+Feb 27, 2025 11:51:21 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Feb 27, 2025 11:51:25 AM FriendDatabaseServer$ClientHandler run
+INFO: Client authenticated: /0:0:0:0:0:0:0:1
+Feb 27, 2025 11:51:41 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: list
+Feb 27, 2025 11:51:46 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: edit Arnaud
+Feb 27, 2025 11:51:58 AM FriendDatabaseServer saveDatabase
+INFO: Database saved successfully.
+Feb 27, 2025 11:51:58 AM FriendDatabaseServer$ClientHandler run
+INFO: Friend updated: Arnaud
+Feb 27, 2025 11:52:00 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: list
+Feb 27, 2025 11:52:12 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: edit Arnaudus
+Feb 27, 2025 11:52:21 AM FriendDatabaseServer saveDatabase
+INFO: Database saved successfully.
+Feb 27, 2025 11:52:21 AM FriendDatabaseServer$ClientHandler run
+INFO: Friend updated: Arnaudus
+Feb 27, 2025 11:52:24 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: list
+Feb 27, 2025 11:52:32 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: edit Arnaudus
+Feb 27, 2025 11:52:49 AM FriendDatabaseServer saveDatabase
+INFO: Database saved successfully.
+Feb 27, 2025 11:52:49 AM FriendDatabaseServer$ClientHandler run
+INFO: Friend updated: Arnaudus
+Feb 27, 2025 11:52:52 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: list
+Feb 27, 2025 11:54:20 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: active[C[C[C[C[C
