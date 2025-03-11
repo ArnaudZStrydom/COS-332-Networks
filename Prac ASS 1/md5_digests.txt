@@ -1,9 +1,15 @@
-<<<<<<< HEAD
 0e883172c873e8dd96ee6b7036c7a127 Tar md5
 fe0b6e7324d4d4cd53153d63faf65dc2 Time cgi md5
 065bb88c705defb3650c66c4ca310c9e SetTime md5
-=======
-0e883172c873e8dd96ee6b7036c7a127 Tar md5
-fe0b6e7324d4d4cd53153d63faf65dc2 Time cgi md5
-065bb88c705defb3650c66c4ca310c9e SetTime md5
->>>>>>> a81273e0e285b55ceebb2630864a8739b3939f08
+
+tar -czvf assignment1.tar.gz /var/www/html/index.html /usr/lib/cgi-bin/TimeCGI.java /usr/lib/cgi-bin/SetTimeCGI.java /usr/lib/cgi-bin/time.cgi /usr/lib/cgi-bin/set_time.cgi /var/www/html/timezone.txt
+
+
+tar -xzvf assignment1.tar
+
+mkdir my_project
+tar -xzvf assignment1.tar.gz -C my_project
+
+ls -l my_project
+
+sudo systemctl start apache2

@@ -198,3 +198,27 @@ Mar 09, 2025 11:30:38 AM FriendDatabaseServer$ClientHandler handleAddCommand
 INFO: Friend added: john
 Mar 09, 2025 11:30:40 AM FriendDatabaseServer$ClientHandler run
 INFO: Command received from /0:0:0:0:0:0:0:1: list
+Mar 09, 2025 11:33:39 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: exit
+Mar 09, 2025 11:33:39 AM FriendDatabaseServer$ClientHandler run
+INFO: Client disconnected: /0:0:0:0:0:0:0:1
+Mar 09, 2025 11:33:57 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 09, 2025 11:34:02 AM FriendDatabaseServer$ClientHandler run
+WARNING: Unauthorized access attempt from /0:0:0:0:0:0:0:1
+Mar 09, 2025 11:34:26 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 09, 2025 11:35:28 AM FriendDatabaseServer$ClientHandler run
+WARNING: Unauthorized access attempt from /0:0:0:0:0:0:0:1
+Mar 09, 2025 11:35:39 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 09, 2025 11:35:42 AM FriendDatabaseServer$ClientHandler run
+INFO: Client authenticated: /0:0:0:0:0:0:0:1
+Mar 09, 2025 11:35:42 AM FriendDatabaseServer$ClientHandler run
+INFO: Active users: 1
+Mar 09, 2025 11:35:48 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: john
+Mar 09, 2025 11:35:53 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: add john
+Mar 09, 2025 11:36:08 AM FriendDatabaseServer$ClientHandler run
+INFO: Command received from /0:0:0:0:0:0:0:1: add johnm 0845567102
