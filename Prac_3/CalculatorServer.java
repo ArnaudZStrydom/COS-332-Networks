@@ -16,6 +16,7 @@ public class CalculatorServer {
             System.out.println("Starting Calculator Server...");
             System.out.println("HTTP Server is running on port " + PORT);
 
+            // Start HTTP server
             try (ServerSocket serverSocket = new ServerSocket(PORT)) {
                 while (true) {
                     Socket clientSocket = serverSocket.accept();
@@ -39,14 +40,6 @@ public class CalculatorServer {
             String[] requestParts = requestLine.split(" ");
             String method = requestParts[0];
             String path = requestParts[1];
-
-            // Log request details
-            System.out.println("Received request:");
-            System.out.println(requestLine);
-            String line;
-            while ((line = in.readLine()) != null && !line.isEmpty()) {
-                System.out.println(line);
-            }
 
             // Handle HEAD request
             if (method.equals("HEAD")) {
@@ -75,7 +68,7 @@ public class CalculatorServer {
                 // Send the response with updated state
                 sendCalculatorPage(out);
             } else {
-                sendErrorResponse(out, 405, "Method Not Allowed");
+                sendErrorResponse(out, 400, "Bad Request");
             }
         } catch (IOException e) {
             System.err.println("Error handling client: " + e.getMessage());
