@@ -198,3 +198,59 @@ Mar 09, 2025 11:30:38 AM FriendDatabaseServer$ClientHandler handleAddCommand
 INFO: Friend added: john
 Mar 09, 2025 11:30:40 AM FriendDatabaseServer$ClientHandler run
 INFO: Command received from /0:0:0:0:0:0:0:1: list
+Mar 11, 2025 10:36:09 AM FriendDatabaseServer loadDatabase
+INFO: Database loaded successfully.
+Mar 11, 2025 10:36:09 AM FriendDatabaseServer main
+INFO: Server started on port 8080
+Mar 11, 2025 10:36:50 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:36:50 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:36:50 AM FriendDatabaseServer$ClientHandler run
+WARNING: Unauthorized access attempt from /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:36:51 AM FriendDatabaseServer$ClientHandler run
+WARNING: Unauthorized access attempt from /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:36:51 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:36:51 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:36:51 AM FriendDatabaseServer$ClientHandler run
+WARNING: Unauthorized access attempt from /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:36:51 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:36:54 AM FriendDatabaseServer$ClientHandler run
+WARNING: Unauthorized access attempt from /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:36:59 AM FriendDatabaseServer$ClientHandler run
+WARNING: Unauthorized access attempt from /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:36:59 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:37:11 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:37:11 AM FriendDatabaseServer$ClientHandler run
+WARNING: Unauthorized access attempt from /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:37:20 AM FriendDatabaseServer loadDatabase
+INFO: Database loaded successfully.
+Mar 11, 2025 10:37:20 AM FriendDatabaseServer main
+INFO: Server started on port 8080
+Mar 11, 2025 10:37:41 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:37:41 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:37:41 AM FriendDatabaseServer$ClientHandler run
+WARNING: Unauthorized access attempt from /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:37:51 AM FriendDatabaseServer$ClientHandler run
+WARNING: Unauthorized access attempt from /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:37:51 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:37:51 AM FriendDatabaseServer main
+INFO: New client connected: /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:37:52 AM FriendDatabaseServer$ClientHandler run
+WARNING: Unauthorized access attempt from /0:0:0:0:0:0:0:1
+Mar 11, 2025 10:47:32 AM FriendDatabaseServer loadDatabase
+INFO: Database loaded successfully.
+Mar 11, 2025 10:47:32 AM FriendDatabaseServer main
+INFO: Server started on port 8080
+Mar 11, 2025 10:50:14 AM FriendDatabaseServer loadDatabase
+INFO: Database loaded successfully.
+Mar 11, 2025 10:50:14 AM FriendDatabaseServer main
+INFO: Server started on port 8080
