@@ -1,0 +1,6 @@
+com\PhoneBook\PhonebookServer$ImageHandler.class
+com\PhoneBook\PhonebookServer$FormHandler.class
+com\PhoneBook\PhonebookServer$SearchHandler.class
+com\PhoneBook\PhonebookServer$PhonebookWebSocketServer.class
+com\PhoneBook\PhonebookServer$Contact.class
+com\PhoneBook\PhonebookServer.class
