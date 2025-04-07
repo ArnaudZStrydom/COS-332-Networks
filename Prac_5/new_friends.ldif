@@ -1,22 +1,3 @@
-dn: dc=example,dc=com
-objectClass: top
-objectClass: dcObject
-objectClass: organization
-o: Example Organization
-dc: example
-
-dn: ou=Friends,dc=example,dc=com
-objectClass: organizationalUnit
-ou: Friends
-
-dn: cn=John Doe,ou=Friends,dc=example,dc=com
-objectClass: person
-objectClass: inetOrgPerson
-cn: John Doe
-sn: Doe
-telephoneNumber: 1234567890
-mail: John.Doe@example.com
-
 dn: cn=Jane Smith,ou=Friends,dc=example,dc=com
 objectClass: person
 objectClass: inetOrgPerson
