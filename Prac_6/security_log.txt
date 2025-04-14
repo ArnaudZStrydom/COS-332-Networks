@@ -1,0 +1,20 @@
+Apr 14, 2025 10:22:44 AM AlarmSystem processSensorInput
+WARNING: ALARM TRIGGERED: Back Door (Perimeter zone)
+Apr 14, 2025 10:23:21 AM AlarmSystem checkSystemStatus
+FINE: System status check: state=Armed (Away)
+Apr 14, 2025 10:23:29 AM AlarmSystem changeAlarmState
+INFO: Alarm state changed from Armed (Away) to Disarmed
+Apr 14, 2025 10:23:34 AM AlarmSystem processSensorInput
+INFO: Back Door triggered while system was disarmed
+Apr 14, 2025 10:24:21 AM AlarmSystem checkSystemStatus
+FINE: System status check: state=Disarmed
+Apr 14, 2025 10:24:28 AM AlarmSystem changeAlarmState
+INFO: Alarm state changed from Disarmed to Armed (Away)
+Apr 14, 2025 10:25:21 AM AlarmSystem checkSystemStatus
+FINE: System status check: state=Armed (Away)
+Apr 14, 2025 10:25:30 AM AlarmSystem processSensorInput
+WARNING: ALARM TRIGGERED: Motion Detector (Interior zone)
+Apr 14, 2025 10:26:21 AM AlarmSystem checkSystemStatus
+FINE: System status check: state=Armed (Away)
+Apr 14, 2025 10:26:31 AM AlarmSystem processSensorInput
+WARNING: ALARM TRIGGERED: Motion Detector (Interior zone)
