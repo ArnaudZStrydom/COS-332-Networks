@@ -1,0 +1,23 @@
+dn: cn=Jane Smith,ou=Friends,dc=example,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+cn: Jane Smith
+sn: Smith
+telephoneNumber: 9876543210
+mail: jane.smith@example.com
+
+dn: cn=Bob Johnson,ou=Friends,dc=example,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+cn: Bob Johnson
+sn: Johnson
+telephoneNumber: 5551234567
+mobile: 5559876543
+
+dn: cn=Alice Brown,ou=Friends,dc=example,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+cn: Alice Brown
+sn: Brown
+telephoneNumber: 1112223333
+description: Project Manager

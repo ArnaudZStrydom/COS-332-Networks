@@ -1,0 +1,330 @@
+Apr 02 17:39:34 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 17:39:34 ArnaudsPC slapd[1063]:  * Starting OpenLDAP slapd
+Apr 02 17:39:34 ArnaudsPC slapd[1069]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                               Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 17:39:34 ArnaudsPC slapd[1070]: slapd starting
+Apr 02 17:39:34 ArnaudsPC slapd[1063]:    ...done.
+Apr 02 17:39:34 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 17:46:50 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 17:46:50 ArnaudsPC slapd[4559]:  * Stopping OpenLDAP slapd
+Apr 02 17:46:50 ArnaudsPC slapd[1070]: daemon: shutdown requested and initiated.
+Apr 02 17:46:50 ArnaudsPC slapd[1070]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 17:46:50 ArnaudsPC slapd[1070]: DIGEST-MD5 common mech free
+Apr 02 17:46:50 ArnaudsPC slapd[1070]: DIGEST-MD5 common mech free
+Apr 02 17:46:50 ArnaudsPC slapd[1070]: slapd stopped.
+Apr 02 17:46:50 ArnaudsPC slapd[4559]:    ...done.
+Apr 02 17:46:50 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 17:46:50 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 17:48:08 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 17:48:08 ArnaudsPC slapd[5273]:  * Starting OpenLDAP slapd
+Apr 02 17:48:08 ArnaudsPC slapd[5279]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                               Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 17:48:08 ArnaudsPC slapd[5280]: slapd starting
+Apr 02 17:48:08 ArnaudsPC slapd[5273]:    ...done.
+Apr 02 17:48:08 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 17:50:34 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 17:50:34 ArnaudsPC slapd[6664]:  * Stopping OpenLDAP slapd
+Apr 02 17:50:34 ArnaudsPC slapd[5280]: daemon: shutdown requested and initiated.
+Apr 02 17:50:34 ArnaudsPC slapd[5280]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 17:50:34 ArnaudsPC slapd[5280]: DIGEST-MD5 common mech free
+Apr 02 17:50:34 ArnaudsPC slapd[5280]: DIGEST-MD5 common mech free
+Apr 02 17:50:34 ArnaudsPC slapd[5280]: slapd stopped.
+Apr 02 17:50:34 ArnaudsPC slapd[6664]:    ...done.
+Apr 02 17:50:34 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 17:50:34 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 17:52:24 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 17:52:24 ArnaudsPC slapd[7779]:  * Starting OpenLDAP slapd
+Apr 02 17:52:24 ArnaudsPC slapd[7779]:    ...done.
+Apr 02 17:52:24 ArnaudsPC slapd[7786]:  * Stopping OpenLDAP slapd
+Apr 02 17:52:24 ArnaudsPC slapd[7786]:    ...done.
+Apr 02 17:52:24 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 17:52:24 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 17:53:07 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 17:53:07 ArnaudsPC slapd[8655]:  * Starting OpenLDAP slapd
+Apr 02 17:53:07 ArnaudsPC slapd[8661]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                               Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 17:53:07 ArnaudsPC slapd[8662]: slapd starting
+Apr 02 17:53:07 ArnaudsPC slapd[8655]:    ...done.
+Apr 02 17:53:07 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 17:56:24 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 17:56:24 ArnaudsPC slapd[10590]:  * Stopping OpenLDAP slapd
+Apr 02 17:56:24 ArnaudsPC slapd[8662]: daemon: shutdown requested and initiated.
+Apr 02 17:56:24 ArnaudsPC slapd[8662]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 17:56:24 ArnaudsPC slapd[8662]: DIGEST-MD5 common mech free
+Apr 02 17:56:24 ArnaudsPC slapd[8662]: DIGEST-MD5 common mech free
+Apr 02 17:56:24 ArnaudsPC slapd[8662]: slapd stopped.
+Apr 02 17:56:24 ArnaudsPC slapd[10590]:    ...done.
+Apr 02 17:56:24 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 17:56:24 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 17:56:38 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 17:56:38 ArnaudsPC slapd[11128]:  * Starting OpenLDAP slapd
+Apr 02 17:56:38 ArnaudsPC slapd[11134]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 17:56:38 ArnaudsPC slapd[11135]: slapd starting
+Apr 02 17:56:38 ArnaudsPC slapd[11128]:    ...done.
+Apr 02 17:56:38 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 18:29:09 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 18:29:09 ArnaudsPC slapd[25419]:  * Stopping OpenLDAP slapd
+Apr 02 18:29:09 ArnaudsPC slapd[11135]: daemon: shutdown requested and initiated.
+Apr 02 18:29:09 ArnaudsPC slapd[11135]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 18:29:09 ArnaudsPC slapd[11135]: DIGEST-MD5 common mech free
+Apr 02 18:29:09 ArnaudsPC slapd[11135]: DIGEST-MD5 common mech free
+Apr 02 18:29:09 ArnaudsPC slapd[11135]: slapd stopped.
+Apr 02 18:29:09 ArnaudsPC slapd[25419]:    ...done.
+Apr 02 18:29:09 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 18:29:09 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 18:30:45 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 18:30:45 ArnaudsPC slapd[27198]:  * Starting OpenLDAP slapd
+Apr 02 18:30:45 ArnaudsPC slapd[27207]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 18:30:45 ArnaudsPC slapd[27209]: slapd starting
+Apr 02 18:30:45 ArnaudsPC slapd[27198]:    ...done.
+Apr 02 18:30:45 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 18:32:45 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 18:32:45 ArnaudsPC slapd[28315]:  * Stopping OpenLDAP slapd
+Apr 02 18:32:45 ArnaudsPC slapd[27209]: daemon: shutdown requested and initiated.
+Apr 02 18:32:45 ArnaudsPC slapd[27209]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 18:32:45 ArnaudsPC slapd[27209]: DIGEST-MD5 common mech free
+Apr 02 18:32:45 ArnaudsPC slapd[27209]: DIGEST-MD5 common mech free
+Apr 02 18:32:45 ArnaudsPC slapd[27209]: slapd stopped.
+Apr 02 18:32:45 ArnaudsPC slapd[28315]:    ...done.
+Apr 02 18:32:45 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 18:32:45 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 18:33:14 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 18:33:14 ArnaudsPC slapd[28782]:  * No configuration file was found for slapd at /etc/ldap/slapd.conf.
+Apr 02 18:33:14 ArnaudsPC systemd[1]: slapd.service: Control process exited, code=exited, status=1/FAILURE
+Apr 02 18:33:14 ArnaudsPC systemd[1]: slapd.service: Failed with result 'exit-code'.
+Apr 02 18:33:14 ArnaudsPC systemd[1]: Failed to start LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 18:36:23 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 18:36:23 ArnaudsPC slapd[32034]:  * Starting OpenLDAP slapd
+Apr 02 18:36:23 ArnaudsPC slapd[32040]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 18:36:23 ArnaudsPC slapd[32041]: slapd starting
+Apr 02 18:36:23 ArnaudsPC slapd[32034]:    ...done.
+Apr 02 18:36:23 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 18:39:24 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 18:39:24 ArnaudsPC slapd[33599]:  * Stopping OpenLDAP slapd
+Apr 02 18:39:24 ArnaudsPC slapd[32041]: daemon: shutdown requested and initiated.
+Apr 02 18:39:24 ArnaudsPC slapd[32041]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 18:39:24 ArnaudsPC slapd[32041]: DIGEST-MD5 common mech free
+Apr 02 18:39:24 ArnaudsPC slapd[32041]: DIGEST-MD5 common mech free
+Apr 02 18:39:24 ArnaudsPC slapd[32041]: slapd stopped.
+Apr 02 18:39:24 ArnaudsPC slapd[33599]:    ...done.
+Apr 02 18:39:24 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 18:39:24 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 18:39:24 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 18:39:25 ArnaudsPC slapd[33606]:  * Starting OpenLDAP slapd
+Apr 02 18:39:25 ArnaudsPC slapd[33612]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 18:39:25 ArnaudsPC slapd[33613]: slapd starting
+Apr 02 18:39:25 ArnaudsPC slapd[33606]:    ...done.
+Apr 02 18:39:25 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 18:46:54 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 18:46:54 ArnaudsPC slapd[46639]:  * Stopping OpenLDAP slapd
+Apr 02 18:46:54 ArnaudsPC slapd[33613]: daemon: shutdown requested and initiated.
+Apr 02 18:46:54 ArnaudsPC slapd[33613]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 18:46:54 ArnaudsPC slapd[33613]: DIGEST-MD5 common mech free
+Apr 02 18:46:54 ArnaudsPC slapd[33613]: DIGEST-MD5 common mech free
+Apr 02 18:46:54 ArnaudsPC slapd[33613]: slapd stopped.
+Apr 02 18:46:54 ArnaudsPC slapd[46639]:    ...done.
+Apr 02 18:46:54 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 18:46:54 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 18:47:43 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 18:47:43 ArnaudsPC slapd[47385]:  * Starting OpenLDAP slapd
+Apr 02 18:47:43 ArnaudsPC slapd[47391]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 18:47:43 ArnaudsPC slapd[47392]: slapd starting
+Apr 02 18:47:43 ArnaudsPC slapd[47385]:    ...done.
+Apr 02 18:47:43 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:22:05 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:22:05 ArnaudsPC slapd[66911]:  * Stopping OpenLDAP slapd
+Apr 02 19:22:05 ArnaudsPC slapd[47392]: daemon: shutdown requested and initiated.
+Apr 02 19:22:05 ArnaudsPC slapd[47392]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 19:22:05 ArnaudsPC slapd[47392]: DIGEST-MD5 common mech free
+Apr 02 19:22:05 ArnaudsPC slapd[47392]: DIGEST-MD5 common mech free
+Apr 02 19:22:05 ArnaudsPC slapd[47392]: slapd stopped.
+Apr 02 19:22:05 ArnaudsPC slapd[66911]:    ...done.
+Apr 02 19:22:05 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 19:22:05 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:22:05 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:22:05 ArnaudsPC slapd[66922]:  * Starting OpenLDAP slapd
+Apr 02 19:22:05 ArnaudsPC slapd[66931]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 19:22:05 ArnaudsPC slapd[66937]: slapd starting
+Apr 02 19:22:05 ArnaudsPC slapd[66922]:    ...done.
+Apr 02 19:22:05 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:22:59 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:22:59 ArnaudsPC slapd[67386]:  * Stopping OpenLDAP slapd
+Apr 02 19:22:59 ArnaudsPC slapd[66937]: daemon: shutdown requested and initiated.
+Apr 02 19:22:59 ArnaudsPC slapd[66937]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 19:22:59 ArnaudsPC slapd[66937]: DIGEST-MD5 common mech free
+Apr 02 19:22:59 ArnaudsPC slapd[66937]: DIGEST-MD5 common mech free
+Apr 02 19:22:59 ArnaudsPC slapd[66937]: slapd stopped.
+Apr 02 19:22:59 ArnaudsPC slapd[67386]:    ...done.
+Apr 02 19:22:59 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 19:22:59 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:22:59 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:22:59 ArnaudsPC slapd[67396]:  * Starting OpenLDAP slapd
+Apr 02 19:22:59 ArnaudsPC slapd[67404]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 19:22:59 ArnaudsPC slapd[67409]: slapd starting
+Apr 02 19:22:59 ArnaudsPC slapd[67396]:    ...done.
+Apr 02 19:22:59 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:27:28 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:27:28 ArnaudsPC slapd[70070]:  * Stopping OpenLDAP slapd
+Apr 02 19:27:28 ArnaudsPC slapd[67409]: daemon: shutdown requested and initiated.
+Apr 02 19:27:28 ArnaudsPC slapd[67409]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 19:27:28 ArnaudsPC slapd[67409]: DIGEST-MD5 common mech free
+Apr 02 19:27:28 ArnaudsPC slapd[67409]: DIGEST-MD5 common mech free
+Apr 02 19:27:28 ArnaudsPC slapd[67409]: slapd stopped.
+Apr 02 19:27:28 ArnaudsPC slapd[70070]:    ...done.
+Apr 02 19:27:28 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 19:27:28 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:28:31 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:28:32 ArnaudsPC slapd[79034]:  * Starting OpenLDAP slapd
+Apr 02 19:28:32 ArnaudsPC slapd[79040]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 19:28:32 ArnaudsPC slapd[79041]: slapd starting
+Apr 02 19:28:32 ArnaudsPC slapd[79034]:    ...done.
+Apr 02 19:28:32 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:28:58 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:28:58 ArnaudsPC slapd[82741]:  * Stopping OpenLDAP slapd
+Apr 02 19:28:58 ArnaudsPC slapd[79041]: daemon: shutdown requested and initiated.
+Apr 02 19:28:58 ArnaudsPC slapd[79041]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 19:28:58 ArnaudsPC slapd[79041]: DIGEST-MD5 common mech free
+Apr 02 19:28:58 ArnaudsPC slapd[79041]: DIGEST-MD5 common mech free
+Apr 02 19:28:58 ArnaudsPC slapd[79041]: slapd stopped.
+Apr 02 19:28:58 ArnaudsPC slapd[82741]:    ...done.
+Apr 02 19:28:58 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 19:28:58 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:28:58 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:28:58 ArnaudsPC slapd[82750]:  * Starting OpenLDAP slapd
+Apr 02 19:28:58 ArnaudsPC slapd[82759]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 19:28:58 ArnaudsPC slapd[82763]: slapd starting
+Apr 02 19:28:58 ArnaudsPC slapd[82750]:    ...done.
+Apr 02 19:28:58 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:30:34 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:30:34 ArnaudsPC slapd[83584]:  * Stopping OpenLDAP slapd
+Apr 02 19:30:34 ArnaudsPC slapd[82763]: daemon: shutdown requested and initiated.
+Apr 02 19:30:34 ArnaudsPC slapd[82763]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 19:30:34 ArnaudsPC slapd[82763]: DIGEST-MD5 common mech free
+Apr 02 19:30:34 ArnaudsPC slapd[82763]: DIGEST-MD5 common mech free
+Apr 02 19:30:34 ArnaudsPC slapd[82763]: slapd stopped.
+Apr 02 19:30:34 ArnaudsPC slapd[83584]:    ...done.
+Apr 02 19:30:34 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 19:30:34 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:30:46 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:30:46 ArnaudsPC slapd[84230]:  * Starting OpenLDAP slapd
+Apr 02 19:30:46 ArnaudsPC slapd[84236]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 19:30:46 ArnaudsPC slapd[84237]: slapd starting
+Apr 02 19:30:46 ArnaudsPC slapd[84230]:    ...done.
+Apr 02 19:30:46 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:31:01 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:31:01 ArnaudsPC slapd[84555]:  * Stopping OpenLDAP slapd
+Apr 02 19:31:01 ArnaudsPC slapd[84237]: daemon: shutdown requested and initiated.
+Apr 02 19:31:01 ArnaudsPC slapd[84237]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 19:31:01 ArnaudsPC slapd[84237]: DIGEST-MD5 common mech free
+Apr 02 19:31:01 ArnaudsPC slapd[84237]: DIGEST-MD5 common mech free
+Apr 02 19:31:01 ArnaudsPC slapd[84237]: slapd stopped.
+Apr 02 19:31:01 ArnaudsPC slapd[84555]:    ...done.
+Apr 02 19:31:01 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 19:31:01 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:32:03 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:32:03 ArnaudsPC slapd[85986]:  * Starting OpenLDAP slapd
+Apr 02 19:32:03 ArnaudsPC slapd[85992]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 19:32:03 ArnaudsPC slapd[85993]: slapd starting
+Apr 02 19:32:03 ArnaudsPC slapd[85986]:    ...done.
+Apr 02 19:32:03 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:32:35 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:32:35 ArnaudsPC slapd[86490]:  * Stopping OpenLDAP slapd
+Apr 02 19:32:35 ArnaudsPC slapd[85993]: daemon: shutdown requested and initiated.
+Apr 02 19:32:35 ArnaudsPC slapd[85993]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 19:32:35 ArnaudsPC slapd[85993]: DIGEST-MD5 common mech free
+Apr 02 19:32:35 ArnaudsPC slapd[85993]: DIGEST-MD5 common mech free
+Apr 02 19:32:35 ArnaudsPC slapd[85993]: slapd stopped.
+Apr 02 19:32:35 ArnaudsPC slapd[86490]:    ...done.
+Apr 02 19:32:35 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 19:32:35 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:33:28 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:33:28 ArnaudsPC slapd[87350]:  * Starting OpenLDAP slapd
+Apr 02 19:33:28 ArnaudsPC slapd[87356]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 19:33:28 ArnaudsPC slapd[87357]: slapd starting
+Apr 02 19:33:28 ArnaudsPC slapd[87350]:    ...done.
+Apr 02 19:33:28 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:34:08 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:34:08 ArnaudsPC slapd[87801]:  * Stopping OpenLDAP slapd
+Apr 02 19:34:08 ArnaudsPC slapd[87357]: daemon: shutdown requested and initiated.
+Apr 02 19:34:08 ArnaudsPC slapd[87357]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 02 19:34:08 ArnaudsPC slapd[87357]: DIGEST-MD5 common mech free
+Apr 02 19:34:08 ArnaudsPC slapd[87357]: DIGEST-MD5 common mech free
+Apr 02 19:34:08 ArnaudsPC slapd[87357]: slapd stopped.
+Apr 02 19:34:08 ArnaudsPC slapd[87801]:    ...done.
+Apr 02 19:34:08 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 02 19:34:08 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 02 19:34:08 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 02 19:34:08 ArnaudsPC slapd[87810]:  * Starting OpenLDAP slapd
+Apr 02 19:34:08 ArnaudsPC slapd[87816]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 02 19:34:08 ArnaudsPC slapd[87819]: slapd starting
+Apr 02 19:34:08 ArnaudsPC slapd[87810]:    ...done.
+Apr 02 19:34:08 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 03 12:17:41 ArnaudsPC slapd[87819]: conn=1054 op=0 do_bind: ber_scanf failed
+Apr 03 12:19:16 ArnaudsPC slapd[87819]: conn=1056 op=0 do_bind: ber_scanf failed
+Apr 03 12:19:44 ArnaudsPC slapd[87819]: conn=1058 op=0 do_bind: ber_scanf failed
+Apr 03 12:19:58 ArnaudsPC slapd[87819]: conn=1060 op=0 do_bind: ber_scanf failed
+Apr 03 12:27:14 ArnaudsPC slapd[87819]: conn=1062 op=0 do_bind: ber_scanf failed
+Apr 03 13:23:58 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 03 13:23:58 ArnaudsPC slapd[570518]:  * Stopping OpenLDAP slapd
+Apr 03 13:23:58 ArnaudsPC slapd[87819]: daemon: shutdown requested and initiated.
+Apr 03 13:23:58 ArnaudsPC slapd[87819]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 03 13:23:58 ArnaudsPC slapd[87819]: DIGEST-MD5 common mech free
+Apr 03 13:23:58 ArnaudsPC slapd[87819]: DIGEST-MD5 common mech free
+Apr 03 13:23:58 ArnaudsPC slapd[87819]: slapd stopped.
+Apr 03 13:23:58 ArnaudsPC slapd[570518]:    ...done.
+Apr 03 13:23:58 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 03 13:23:58 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 03 13:26:08 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 03 13:26:08 ArnaudsPC slapd[572072]:  * Starting OpenLDAP slapd
+Apr 03 13:26:08 ArnaudsPC slapd[572078]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                 Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 03 13:26:08 ArnaudsPC slapd[572079]: slapd starting
+Apr 03 13:26:08 ArnaudsPC slapd[572072]:    ...done.
+Apr 03 13:26:08 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 03 14:14:15 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 03 14:14:15 ArnaudsPC slapd[595826]:  * Stopping OpenLDAP slapd
+Apr 03 14:14:15 ArnaudsPC slapd[572079]: daemon: shutdown requested and initiated.
+Apr 03 14:14:15 ArnaudsPC slapd[572079]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 03 14:14:15 ArnaudsPC slapd[572079]: DIGEST-MD5 common mech free
+Apr 03 14:14:15 ArnaudsPC slapd[572079]: DIGEST-MD5 common mech free
+Apr 03 14:14:15 ArnaudsPC slapd[572079]: slapd stopped.
+Apr 03 14:14:15 ArnaudsPC slapd[595826]:    ...done.
+Apr 03 14:14:15 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 03 14:14:15 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 03 14:14:15 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 03 14:14:15 ArnaudsPC slapd[595835]:  * Starting OpenLDAP slapd
+Apr 03 14:14:15 ArnaudsPC slapd[595841]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                 Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 03 14:14:15 ArnaudsPC slapd[595842]: slapd starting
+Apr 03 14:14:15 ArnaudsPC slapd[595835]:    ...done.
+Apr 03 14:14:15 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 03 14:14:33 ArnaudsPC systemd[1]: Stopping LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 03 14:14:33 ArnaudsPC slapd[595999]:  * Stopping OpenLDAP slapd
+Apr 03 14:14:33 ArnaudsPC slapd[595842]: daemon: shutdown requested and initiated.
+Apr 03 14:14:33 ArnaudsPC slapd[595842]: slapd shutdown: waiting for 0 operations/tasks to finish
+Apr 03 14:14:33 ArnaudsPC slapd[595842]: DIGEST-MD5 common mech free
+Apr 03 14:14:33 ArnaudsPC slapd[595842]: DIGEST-MD5 common mech free
+Apr 03 14:14:33 ArnaudsPC slapd[595842]: slapd stopped.
+Apr 03 14:14:33 ArnaudsPC slapd[595999]:    ...done.
+Apr 03 14:14:33 ArnaudsPC systemd[1]: slapd.service: Deactivated successfully.
+Apr 03 14:14:33 ArnaudsPC systemd[1]: Stopped LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).
+Apr 03 14:14:33 ArnaudsPC systemd[1]: Starting LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol)...
+Apr 03 14:14:33 ArnaudsPC slapd[596005]:  * Starting OpenLDAP slapd
+Apr 03 14:14:33 ArnaudsPC slapd[596011]: @(#) $OpenLDAP: slapd 2.5.18+dfsg-0ubuntu0.22.04.3 (Dec  9 2024 02:54:19) $
+                                                 Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Apr 03 14:14:33 ArnaudsPC slapd[596012]: slapd starting
+Apr 03 14:14:33 ArnaudsPC slapd[596005]:    ...done.
+Apr 03 14:14:33 ArnaudsPC systemd[1]: Started LSB: OpenLDAP standalone server (Lightweight Directory Access Protocol).

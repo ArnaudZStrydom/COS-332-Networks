@@ -1,0 +1,6 @@
+dn: cn=John Doe,ou=Friends,dc=example,dc=com
+objectClass: person
+objectClass: inetOrgPerson
+cn: John Doe
+sn: Doe
+telephoneNumber: 1234567890

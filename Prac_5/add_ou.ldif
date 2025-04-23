@@ -1,0 +1,4 @@
+dn: ou=Friends,dc=example,dc=com
+objectClass: organizationalUnit
+ou: Friends
+description: Friends Directory
