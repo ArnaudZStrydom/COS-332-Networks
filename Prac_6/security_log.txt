@@ -18,3 +18,11 @@ Apr 14, 2025 10:26:21 AM AlarmSystem checkSystemStatus
 FINE: System status check: state=Armed (Away)
 Apr 14, 2025 10:26:31 AM AlarmSystem processSensorInput
 WARNING: ALARM TRIGGERED: Motion Detector (Interior zone)
+Apr 23, 2025 8:07:51 PM AlarmSystem processSensorInput
+WARNING: ALARM TRIGGERED: Back Door (Perimeter zone)
+Apr 23, 2025 8:07:51 PM AlarmSystem processSensorInput
+SEVERE: Failed to send email alert: Connection refused: connect
+Apr 23, 2025 8:08:17 PM AlarmSystem processSensorInput
+WARNING: ALARM TRIGGERED: Motion Detector (Interior zone)
+Apr 23, 2025 8:08:17 PM AlarmSystem processSensorInput
+SEVERE: Failed to send email alert: Connection refused: connect
