@@ -687,7 +687,6 @@ private byte[] readFullResponse() throws IOException {
     
     return buffer.toByteArray();
 }
-
 private boolean isCompleteMessage(byte[] data) {
     if (data.length < 2) return false;
     try {
@@ -703,6 +702,28 @@ private boolean isCompleteMessage(byte[] data) {
 
 
     /* ========== Core Protocol Methods ========== */
+
+    /**
+     * Logs the packet data for debugging purposes.
+     * @param description Description of the packet
+     * @param data The packet data as a byte array
+     */
+    private void logPacket(String description, byte[] data) {
+        System.out.println(description + ": " + bytesToHex(data));
+    }
+
+    /**
+     * Converts a byte array to a hexadecimal string.
+     * @param bytes The byte array
+     * @return Hexadecimal string representation of the byte array
+     */
+    private String bytesToHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (byte b : bytes) {
+            sb.append(String.format("%02X ", b));
+        }
+        return sb.toString().trim();
+    }
     
     private byte[] readResponse() throws IOException {
         DataInputStream din = new DataInputStream(in);

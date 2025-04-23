@@ -1,9 +1,27 @@
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.logging.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class AlarmSystem {
     // SMTP server configuration - using localhost and port 25
@@ -65,27 +83,28 @@ public class AlarmSystem {
     }
     
     public static void main(String[] args) {
+        // Bonus Feature 2: Start heartbeat scheduler (every 24 hours)
+        ScheduledExecutorService heartbeatScheduler = Executors.newScheduledThreadPool(1);
+        heartbeatScheduler.scheduleAtFixedRate(() -> {
+            try {
+                sendHeartbeatEmail();
+            } catch (IOException e) {
+                logger.severe("Heartbeat failed: " + e.getMessage());
+            }
+        }, 0, 24, TimeUnit.HOURS);
+
+        // Main loop
         displayWelcomeMessage();
-        
-        // Start monitoring for key presses
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
-            
-            if (input.isEmpty()) {
-                continue;
-            }
-            
+            if (input.isEmpty()) continue;
+
             char key = input.charAt(0);
-            
             if (key == 'q') {
-                System.out.println("Alarm system shutting down.");
-                try {
-                    fileHandler.close();
-                } catch (SecurityException e) {
-                    // Ignore
-                }
+                System.out.println("Shutting down...");
+                heartbeatScheduler.shutdown();
                 break;
             } else if (key == 'a') {
                 changeAlarmState(scanner);
@@ -97,10 +116,142 @@ public class AlarmSystem {
                 processSensorInput(key);
             }
         }
-        
         scanner.close();
     }
+
+    // Bonus Feature 2: Heartbeat Email
+    private static void sendHeartbeatEmail() throws IOException {
+        String uptime = executeCommand("uptime -p");
+        String body = "Alarm System Heartbeat\n" +
+                     "Uptime: " + uptime + "\n" +
+                     "Last Check: " + new Date() + "\n" +
+                     "Status: " + getStateString(currentState);
+        sendRawEmail("Heartbeat: System Active", body);
+    }
+
+    // Bonus Feature 1: PGP-Encrypted Email
+    private static void sendEmailAlert(String sensorName, String zone)throws IOException {
+        try {
+            String plaintext = "ALERT: " + sensorName + " (" + zone + ") triggered at " + new Date();
+            String encryptedBody = encryptWithGPG(plaintext, RECIPIENT_EMAIL);
+            
+            if (encryptedBody == null) {
+                // Fallback to plaintext only if encryption fails
+                sendRawEmail("ALERT: " + sensorName + " Triggered", plaintext);
+                logger.warning("PGP failed - sent plaintext only");
+            } else {
+                // Create multipart email with both versions
+                String boundary = "==ALARM-BOUNDARY==";
+                String emailContent = "Content-Type: multipart/mixed; boundary=\"" + boundary + "\"\n\n" +
+                    
+                    "--" + boundary + "\n" +
+                    "Content-Type: text/plain; charset=UTF-8\n\n" +
+                    "PLAINTEXT VERSION:\n" + plaintext + "\n\n" +
+                    
+                    "--" + boundary + "\n" +
+                    "Content-Type: application/pgp-encrypted\n" +
+                    "Content-Disposition: attachment; filename=\"encrypted.asc\"\n\n" +
+                   
+                    encryptedBody + 
+                    
+                    
+                    "--" + boundary + "--";
+                
+                sendRawEmail("ALERT: " + sensorName + " Triggered", emailContent);
+                logger.info("Sent multipart alert for " + sensorName);
+            }
+        } catch (Exception e) {
+            logger.severe("Failed to send alert: " + e.getMessage());
+        }
+    }
+
+    private static String encryptWithGPG(String message, String recipient) throws IOException {
+        try {
+            // 1. Create temp file
+            Path tempFile = Files.createTempFile("alarm-", ".txt");
+            Files.writeString(tempFile, message);
     
+            // 2. Run GPG with explicit output to stdout
+            Process gpg = new ProcessBuilder()
+                .command("gpg", "--batch", "--yes", "--encrypt", "--armor",
+                        "--recipient", recipient,
+                        "--output", "-",  // Force output to stdout
+                        tempFile.toString())
+                .redirectError(ProcessBuilder.Redirect.PIPE)
+                .start();
+    
+            // 3. Read output and errors
+            String encrypted = new String(gpg.getInputStream().readAllBytes());
+            String errors = new String(gpg.getErrorStream().readAllBytes());
+            int exitCode = gpg.waitFor();
+    
+            // 4. Clean up
+            Files.delete(tempFile);
+    
+            // 5. Debug output
+            System.out.println("GPG Exit Code: " + exitCode);
+            System.out.println("GPG Output Length: " + encrypted.length());
+            System.out.println("GPG Errors: " + (errors.isEmpty() ? "None" : errors));
+    
+            if (exitCode != 0 || encrypted.isEmpty()) {
+                throw new IOException("GPG failed: " + errors);
+            }
+    
+            return encrypted;
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IOException("Encryption interrupted", e);
+        }
+    }
+
+    
+
+    // Core SMTP Implementation (unchanged)
+    private static void sendRawEmail(String subject, String body) throws IOException {
+        try (Socket socket = new Socket(SMTP_SERVER, SMTP_PORT);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
+
+            // SMTP Protocol Handshake
+            expectResponse(in, "220");
+            out.println("HELO " + InetAddress.getLocalHost().getHostName());
+            expectResponse(in, "250");
+            out.println("MAIL FROM:<" + SENDER_EMAIL + ">");
+            expectResponse(in, "250");
+            out.println("RCPT TO:<" + RECIPIENT_EMAIL + ">");
+            expectResponse(in, "250");
+            out.println("DATA");
+            expectResponse(in, "354");
+
+            // Email Headers
+            out.println("From: Alarm System <" + SENDER_EMAIL + ">");
+            out.println("To: " + RECIPIENT_EMAIL);
+            out.println("Subject: " + subject);
+            out.println("Date: " + new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z").format(new Date()));
+            out.println();
+            out.println(body);
+            out.println(".");
+            expectResponse(in, "250");
+            out.println("QUIT");
+        }
+    }
+
+    // Helper Methods
+    private static void expectResponse(BufferedReader in, String expectedCode) throws IOException {
+        String response = in.readLine();
+        if (!response.startsWith(expectedCode)) {
+            throw new IOException("SMTP error: " + response);
+        }
+    }
+
+    private static String executeCommand(String command) {
+        try {
+            Process proc = Runtime.getRuntime().exec(command);
+            return new String(proc.getInputStream().readAllBytes()).trim();
+        } catch (IOException e) {
+            return "Unknown";
+        }
+    }
     private static void displayWelcomeMessage() {
         System.out.println("**** Home Alarm System with Email Notifications ****");
         System.out.println("Current state: " + getStateString(currentState));
@@ -264,79 +415,5 @@ public class AlarmSystem {
         }
     }
     
-    private static void sendEmailAlert(String sensorName, String zone) throws IOException {
-        Socket socket = new Socket(SMTP_SERVER, SMTP_PORT);
-        
-        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-        
-        // Read the welcome message
-        String response = in.readLine();
-        if (!response.startsWith("220")) {
-            throw new IOException("Invalid server response: " + response);
-        }
-        
-        // HELO command
-        String hostname = InetAddress.getLocalHost().getHostName();
-        out.println("HELO " + hostname);
-        response = in.readLine();
-        if (!response.startsWith("250")) {
-            throw new IOException("HELO command failed: " + response);
-        }
-        
-        // MAIL FROM command
-        out.println("MAIL FROM:<" + SENDER_EMAIL + ">");
-        response = in.readLine();
-        if (!response.startsWith("250")) {
-            throw new IOException("MAIL FROM command failed: " + response);
-        }
-        
-        // RCPT TO command
-        out.println("RCPT TO:<" + RECIPIENT_EMAIL + ">");
-        response = in.readLine();
-        if (!response.startsWith("250")) {
-            throw new IOException("RCPT TO command failed: " + response);
-        }
-        
-        // DATA command
-        out.println("DATA");
-        response = in.readLine();
-        if (!response.startsWith("354")) {
-            throw new IOException("DATA command failed: " + response);
-        }
-        
-        // Email headers and content
-        Date now = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
-        String date = dateFormat.format(now);
-        
-        out.println("From: Home Alarm System <" + SENDER_EMAIL + ">");
-        out.println("To: " + RECIPIENT_EMAIL);
-        out.println("Subject: SECURITY ALERT - " + sensorName + " Triggered");
-        out.println("Date: " + date);
-        out.println();
-        out.println("SECURITY ALERT");
-        out.println("==============");
-        out.println();
-        out.println("Your " + sensorName + " (" + zone + " zone) has been triggered at " + now + ".");
-        out.println();
-        out.println("Alarm System Status: " + getStateString(currentState));
-        out.println();
-        out.println("Please check your property immediately.");
-        out.println();
-        out.println("--");
-        out.println("This message was automatically generated by your Home Alarm System.");
-        out.println(".");  // End of message marker for SMTP
-        
-        response = in.readLine();
-        if (!response.startsWith("250")) {
-            throw new IOException("Message body failed: " + response);
-        }
-        
-        // QUIT command
-        out.println("QUIT");
-        response = in.readLine();
-        
-        socket.close();
-    }
+    
 }
