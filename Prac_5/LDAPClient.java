@@ -280,41 +280,80 @@ public class LDAPClient {
      */
     private String extractPhoneNumber(byte[] response) {
         try {
-            // Simple approach to find telephoneNumber in the response
-            // This is a simplified implementation - in reality, you would need to
-            // properly parse the ASN.1 structure of the response
+            if (response.length < 2) return "Invalid response";
             
-            // Check if we got a search entry response
+            // Check if this is a SearchResultEntry (0x64)
             if (response[0] == 0x64) {
-                // Convert to string to make the search easier
-                // (not efficient but works for this example)
-                String respStr = new String(response);
+                // Parse the ASN.1 structure properly
+                int pos = 1;
+                int length = response[pos++] & 0xFF;
                 
-                // Look for telephoneNumber attribute
-                int phoneAttrPos = respStr.indexOf("telephoneNumber");
-                if (phoneAttrPos != -1) {
-                    // Find the value after the attribute name
-                    int valueStart = respStr.indexOf(':', phoneAttrPos) + 1;
-                    int valueEnd = respStr.indexOf('\n', valueStart);
-                    if (valueEnd == -1) {
-                        valueEnd = respStr.length();
+                // Skip message ID
+                pos += 2; // Assuming short form length
+                
+                // Skip DN
+                pos += response[pos+1] + 2;
+                
+                // Parse attributes sequence
+                if (response[pos] != 0x30) return "Invalid attribute sequence";
+                pos++;
+                int attrSeqLength = response[pos++] & 0xFF;
+                int attrSeqEnd = pos + attrSeqLength;
+                
+                while (pos < attrSeqEnd) {
+                    // Parse attribute sequence
+                    if (response[pos] != 0x30) break;
+                    pos++;
+                    int attrLength = response[pos++] & 0xFF;
+                    int attrEnd = pos + attrLength;
+                    
+                    // Get attribute type
+                    if (response[pos] != 0x04) continue;
+                    pos++;
+                    int typeLength = response[pos++] & 0xFF;
+                    String attrType = new String(response, pos, typeLength);
+                    pos += typeLength;
+                    
+                    // Check if this is telephoneNumber
+                    if (attrType.equals("telephoneNumber")) {
+                        // Parse attribute values
+                        if (response[pos] != 0x31) continue; // SET
+                        pos++;
+                        int valSetLength = response[pos++] & 0xFF;
+                        int valSetEnd = pos + valSetLength;
+                        
+                        // Get first value
+                        if (response[pos] != 0x04) continue;
+                        pos++;
+                        int valLength = response[pos++] & 0xFF;
+                        return new String(response, pos, valLength);
                     }
                     
-                    return respStr.substring(valueStart, valueEnd).trim();
+                    pos = attrEnd;
                 }
                 return "No telephone number found";
+            } 
+            else if (response[0] == 0x65) { // SearchResultDone
+                // Parse result code properly
+                int pos = 1;
+                int length = response[pos++] & 0xFF;
+                pos += 2; // Skip message ID
                 
-            } else if (response[0] == 0x65) {
-                // Search result done - check if we found anything
-                int resultCode = response[7]; // Simplified position
-                if (resultCode == 0) {
-                    return "No matching friend found";
-                } else {
-                    return "Search failed (code " + resultCode + ")";
+                if (response[pos] == 0x0A) { // ENUMERATED (result code)
+                    pos++;
+                    int codeLength = response[pos++] & 0xFF;
+                    int resultCode = response[pos] & 0xFF;
+                    
+                    switch (resultCode) {
+                        case 0: return "No matching friend found";
+                        case 32: return "No such object";
+                        case 49: return "Invalid credentials";
+                        default: return "Search failed (code " + resultCode + ")";
+                    }
                 }
+                return "Search failed";
             }
-            
-            return "Unexpected response from server";
+            return "Unexpected response type";
         } catch (Exception e) {
             return "Error processing response: " + e.getMessage();
         }
