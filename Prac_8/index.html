@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTP Uploader Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .timestamp {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #998;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FTP Uploader Test Page</h1>
+        
+        <div class="timestamp">
+            Last updated: <span id="timestamp">May 15, 2025 12:00:00</span>
+        </div>
+        
+        <div class="content">
+            <p>This is a test page to demonstrate the automatic FTP upload functionality.</p>
+            
+            <p>Edit this file to see changes reflected on the server automatically.</p>
+            
+            <p><strong>How it works:</strong></p>
+            <ol>
+                <li>Edit this HTML file on your local machine</li>
+                <li>Save the changes</li>
+                <li>The Java FTP uploader will detect the changes</li>
+                <li>The file will be automatically uploaded to the server</li>
+                <li>Refresh your browser to see the changes</li>
+                <li>Added something here</li>
+            </ol>
+        </div>
+        
+        <div class="footer">
+            &copy; 2025 FTP Uploader Demo
+        </div>
+    </div>
+    
+    <script>
+        // Update the timestamp to the current time when the page is loaded
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
